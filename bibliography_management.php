@@ -5,7 +5,7 @@
 		</head>
 		<body>
 			<div align="right">
-				<a href="Login.php">Logout</a>
+				<a href="login.php">Logout</a>
 			</div>
 			<nav>
 				<a href="my_bibliographies.php">My Bibliographies</a>
