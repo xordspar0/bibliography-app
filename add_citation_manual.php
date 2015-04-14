@@ -9,7 +9,7 @@
 	<body>
 
 		<nav>
-			<div align right>
+			<div align="right">
 				<a href="javascript:history.back()">Back</a>
 			</div>
 		</nav>
