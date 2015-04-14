@@ -3,15 +3,16 @@
 		<head>
 			<title>Register a new user</title>
 			<div align="right">
-		  	<a href="login.php">Back</a>
-		  </div>
+		  		<a href="login.php">Back</a>
+		  	</div>
+		  	<h1>Register</h1>
 		</head>
 		<body>
 		  
 		
 		
 		
-		  //<p><span class="error">* required field.</span></p>
+		  <!--<p><span class="error">* required field.</span></p>-->
 		  <form action="Login.php" method="post">
 		  User-ID: <br><input type="text" name="userID">
 			
