@@ -3,7 +3,7 @@
 		<head>
 			<title>Register a new user</title>
 			<div align="right">
-		  	<a href="Login.php">Back</a>
+		  	<a href="login.php">Back</a>
 		  </div>
 		</head>
 		<body>
