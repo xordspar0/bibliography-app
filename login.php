@@ -2,6 +2,7 @@
 	<html>
 		<head>
 			<title>Login</title>
+			<h1>Login</h1>
 		</head>
 		<body>
 			
