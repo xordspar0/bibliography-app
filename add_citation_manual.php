@@ -9,7 +9,9 @@
 	<body>
 
 		<nav>
-			<a href="javascript:history.back()">Back</a>
+			<div align right>
+				<a href="javascript:history.back()">Back</a>
+			</div>
 		</nav>
 
 		<form action="get_web_source.php" method="post">
