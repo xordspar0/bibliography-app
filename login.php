@@ -11,7 +11,7 @@
 			<input id="button" type="submit" name="submit" value="Log-In">
 			</form><br>
 		
-			<a href="Register.php">Register</a>
+			<a href="register.php">Register</a>
 		
 		</body>
 	</html>
