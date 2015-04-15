@@ -1,4 +1,4 @@
-	<div style="max-width: 1000px">
+	<div style="max-width: 900px">
 		<nav>
 			<div align="right">
 				<a href="javascript:history.back()">Back</a>
