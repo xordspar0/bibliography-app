@@ -5,14 +5,14 @@
 	</head>
 	<body>
 
-	<?php require 'header.php' ?>
-	<!--TODO: replace this with a list of class "actions"-->
-		<nav>
-			<a href="my_bibliographies.php">My Bibliographies</a>
-			<br><br>
-			<a href="create_new_bibliography.php">Create a new Bibliography</a>
+		<?php require 'header.php' ?>
 
-	<?php require 'footer.php' ?>
+		<ul class="actions">
+			<li><a href="my_bibliographies.php">My Bibliographies</a></li>
+			<li><a href="create_new_bibliography.php">Create a new Bibliography</a></li>
+		</ul>
+
+		<?php require 'footer.php' ?>
 
 	</body>
 </html>
