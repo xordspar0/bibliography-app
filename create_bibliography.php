@@ -8,11 +8,7 @@
 
 	<body>
 
-		<nav>
-			<div align="right">
-				<a href="javascript:history.back()">Back</a>
-			</div>
-		</nav>
+	<?php require 'header.php' ?>
 
 		<form action="add_citation_web.php" method="post">
 			<table>
@@ -26,6 +22,8 @@
 				</tr>
 			</table>
 		</form>
+
+	<?php require 'footer.php' ?>
 
 	</body>
 

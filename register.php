@@ -2,13 +2,10 @@
 	<html>
 		<head>
 			<title>Register a new user</title>
-			<div align="right">
-		  		<a href="login.php">Back</a>
-		  	</div>
-		  	<h1>Register</h1>
 		</head>
 		<body>
 		  
+		  	<h1>Register</h1>
 		
 		
 		

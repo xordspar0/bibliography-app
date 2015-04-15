@@ -8,16 +8,14 @@
 
 	<body>
 
-		<nav>
-			<div align="right">
-				<a href="javascript:history.back()">Back</a>
-			</div>
-		</nav>
+	<?php require 'header.php' ?>
 
 		<ul class="actions">
 			<a href="edit_bibliography.php">Edit Contents</a>
 			<a href="#">Print</a>
 		</ul>
+
+	<?php require 'footer.php' ?>
 
 	</body>
 
