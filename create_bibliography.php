@@ -10,6 +10,8 @@
 
 	<?php require 'header.php' ?>
 
+		<!--TODO: Create the bibliography and store it in the database before going
+			to the add citation page-->
 		<form action="add_citation_web.php" method="post">
 			<table>
 				<tr>

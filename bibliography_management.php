@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<title>Manage your bibliographies</title>
-		</head>
-		<body>
+<html>
+	<head>
+		<title>Manage your bibliographies</title>
+	</head>
+	<body>
 
-		<?php require 'header.php' ?>
-			<nav>
-				<a href="my_bibliographies.php">My Bibliographies</a>
-				<br><br>
-				<a href="create_new_bibliography.php">Create a new Bibliography</a>
+	<?php require 'header.php' ?>
+	<!--TODO: replace this with a list of class "actions"-->
+		<nav>
+			<a href="my_bibliographies.php">My Bibliographies</a>
+			<br><br>
+			<a href="create_new_bibliography.php">Create a new Bibliography</a>
 
-		<?php require 'footer.php' ?>
+	<?php require 'footer.php' ?>
 
-		</body>
-	</html>
+	</body>
+</html>

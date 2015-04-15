@@ -10,6 +10,7 @@
 
 	<?php require 'header.php' ?>
 
+		<!--Do client-side validatoin of the URL-->
 		<form action="get_web_source.php" method="post">
 			<table>
 				<tr>

@@ -12,6 +12,7 @@
 
 		<ul class="actions">
 			<a href="edit_bibliography.php">Edit Contents</a>
+			<!--TODO: Add print functionality to the button here-->
 			<a href="#">Print</a>
 		</ul>
 

@@ -10,6 +10,8 @@
 
 	<?php require 'header.php' ?>
 
+		<!--TODO: Differentiate between source types-->
+		<!--TODO: Add the rest of the attributes to the form-->
 		<form action="get_web_source.php" method="post">
 			<table>
 				<tr>
