@@ -3,7 +3,6 @@
 $uName="";
 $pWord="";
 $errorMessage="";
-$num_rows=0;
 <html>
 	<head>
 		<title>Login</title>
@@ -13,7 +12,7 @@ $num_rows=0;
 		
 		<?php
 			
-			<form>
+			<form action="check_login.php" method="post">
 			Name: <br><input type="text" name="name"><br>
 			Password: <br><input type="text" name="password"><br><br>
 			<input id="button" type="submit" name="submit" value="Log-In">
