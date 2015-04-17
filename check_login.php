@@ -3,8 +3,9 @@
         $uName=$pWord=$errorMsg="";
                 <body>
                         <?php
-                        
-                                $uName=
+                                session_start();
+                                $uName=$_POST["name"];
+                                $pWord=$_POST["pWord"];
                                 
                                 // The connection string is loooooooong. It's easiest to copy/paste this line. Remember to replace 'username' and 'password'!
                                 $conn = oci_connect('username', 'password', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
@@ -25,7 +26,12 @@
                                    }
                                 }
                                 oci_free_statement($stid);
-                                oci_close($conn);                   
+                                oci_close($conn); 
+                                
+                                if(check==1)
+                                {
+                                        
+                                }
                         ?>
                 </body>
         </html>
