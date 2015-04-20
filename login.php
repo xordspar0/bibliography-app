@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<?php print $errorMessage;?>
+<?php print $errorMessage;
 $uName="";
 $pWord="";
 $errorMessage="";
+?>
 <html>
 	<head>
 		<title>Login</title>
