@@ -9,9 +9,9 @@
 		$uName=$_POST['name'];
 		$pWord=$_POST['password'];
 		
-		 $conn = oci_connect('username', 'password', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+		$conn = oci_connect('username', 'password', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 
-        $query = 'SELECT users.userID, users.password FROM users WHERE users.userID='$uName' AND users.password='$pWord'';
+        $query = "SELECT users.userID, users.password FROM users WHERE users.password='$pWord' AND users.userID='$uName' ";
         
         $stid = oci_parse($conn,$query);
         oci_execute($stid,OCI_DEFAULT);
@@ -52,6 +52,5 @@
 		</ul>
 
 		<?php require 'footer.php' ?>
-
 	</body>
 </html>
