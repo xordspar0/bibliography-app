@@ -7,7 +7,7 @@
 	  
 	 	<h1>Register</h1>
 	
-		<?php
+		<!--<?php
 			$idErr=$firstErr=$lastErr=$passErr=$repassErr="";
 			$userID=$firstName=$lastName=$password=$rePassword="";
 			
@@ -58,20 +58,25 @@
 					$password=$_POST["rePassword"];
 				}
 			}
-		?>
+		?>-->
 	
 		<p><span class="error">* required field.</span></p>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 	  	User-ID: <br><input type="text" name="userID">
-		<span class="error">* <?php echo $idErr;?></span>	<br>
+		<!--<span class="error">* <?php echo $idErr;?></span>-->
+		<br>
   		First: <br><input type="text" name="firstName">
-  		<span class="error">* <?php echo $firstErr;?></span><br>
+  		<!--<span class="error">* <?php echo $firstErr;?></span>-->
+  		<br>
 	  	Last: <br><input type="text" name="lastName">
-	  	<span class="error">* <?php echo $lastErr;?></span><br>
+	  	<!--<span class="error">* <?php echo $lastErr;?></span>-->
+	  	<br>
 	  	Password: <br><input type="text" name="password">
-		<span class="error">* <?php echo $passErr;?></span><br>
+		<!--<span class="error">* <?php echo $passErr;?></span>-->
+		<br>
 	  	Re-Enter Password: <br><input type="text" name="rePassword">
-		<span class="error">* <?php echo $repassErr;?></span><br>
+		<!--<span class="error">* <?php echo $repassErr;?></span>-->
+		<br>
 	  	<input id="button" type="submit" name="register" value="Register">
 		
 	
