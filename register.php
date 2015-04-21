@@ -9,28 +9,32 @@
  		}
  		else
  		{
- 			$conn = oci_connect('username', 'password', 
- 			'(DESCRIPTION=
- 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-			
-			$userID=$_POST['userID'];
+ 			$userID=$_POST['userID'];
 			$firstName=$_POST['firstName'];
 			$lastName=$_POST['lastName'];
 			$password=$_POST['password'];
+			$rePassword=$_POST['rePassword'];
 			
-	        $query = "INSERT INTO users 
-	        		  VALUES('$userID',
-	        		  		 '$firstName',
-	        		  		 '$lastName',
-	        		  		 '$password')";
-	        
-	        $stid = oci_parse($conn,$query);
-	        oci_execute($stid,OCI_DEFAULT);
-	        
-	        oci_free_statement($stid);
-	        oci_close($conn); 
-	        
-	        header('Location: login.php');
+			if($password==$rePassword)
+			{
+				$conn = oci_connect('username', 'password', 
+	 			'(DESCRIPTION=
+	 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+				
+		        $query = "INSERT INTO users 
+		        		  VALUES('$userID',
+		        		  		 '$firstName',
+		        		  		 '$lastName',
+		        		  		 '$password')";
+		        
+		        $stid = oci_parse($conn,$query);
+		        oci_execute($stid,OCI_DEFAULT);
+		        
+		        oci_free_statement($stid);
+		        oci_close($conn); 
+		        
+		        header('Location: login.php');	
+			}
  		}
  	}
  ?>
