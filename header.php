@@ -1,6 +1,4 @@
-<div style="max-width: 900px">
+<div id="wrapper">
 	<nav>
-		<div align="right">
-			<a href="javascript:history.back()">Back</a>
-		</div>
+		<a href="javascript:history.back()">Back</a>
 	</nav>

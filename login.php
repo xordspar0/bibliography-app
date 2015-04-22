@@ -11,6 +11,8 @@ $pWord="";
 <html>
 	<head>
 		<title>Login</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="main.css" />
 	</head>
 	<header><h1>Login</h1></header>
 	<body>

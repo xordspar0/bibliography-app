@@ -4,6 +4,7 @@
 	<head>
 		<title>Add a citation manually</title>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="main.css" />
 	</head>
 
 	<body>
