@@ -1,4 +1,6 @@
 <div id="wrapper">
 	<nav>
-		<a href="javascript:history.back()">Back</a>
+		<ul>
+			<li><a href="javascript:history.back()">Back</a></li>
+		</ul>
 	</nav>

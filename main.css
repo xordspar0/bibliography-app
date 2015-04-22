@@ -1,7 +1,12 @@
-div.wrapper {
+#wrapper {
 	max-width: 900px;
 }
 
-nav {
-	align: right;
+nav ul {
+	list-style-type: none;
+	text-align: right;
+}
+
+nav ul li {
+	display: inline;
 }
