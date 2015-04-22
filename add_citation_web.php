@@ -10,21 +10,18 @@
 
 	<?php require 'header.php' ?>
 
-		<!--Do client-side validatoin of the URL-->
-		<form action="get_web_source.php" method="post">
-			<table>
-				<tr>
-					<td>By URL:</td>
-					<td><input type="text" name="url" required /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Add" /></td>
-				</tr>
-			</table>
-		</form>
-
-		<a href="add_citation_manual.php">Manual</a>
+		<section>
+			<span>Enter the URL of the source you want to add.</span>
+			
+			<form action="get_web_source.php" method="post">
+				<input type="url" name="url" value="http://" required />
+				<br>
+				<input type="submit" value="Add" />
+			</form>
+			
+			<a href="add_citation_manual.php">Enter the source manually</a>
+		
+		</section>
 
 	<?php require 'footer.php' ?>
 
