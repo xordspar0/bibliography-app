@@ -12,22 +12,11 @@
     $stid = oci_parse($conn,$query);
     oci_execute($stid,OCI_DEFAULT);
     
-    
-    $check=0;
-    while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
-    {
-       foreach ($row as $item) 
-       {
-          $check=$check+1;
-       }
-    }
-    oci_free_statement($stid);
-    oci_close($conn); 
-    
     session_destroy();
     session_start();
     
-    if($check==1)
+    $row = oci_fetch_array($stid,OCI_ASSOC);
+    if(!empty($row))
     {
     	$_SESSION['name']=$uName;
     }
@@ -37,6 +26,9 @@
     	header("Location: login.php");
     	exit();
     }
+    
+    oci_free_statement($stid);
+    oci_close($conn); 
 	
 ?>
 <html>
