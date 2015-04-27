@@ -18,13 +18,15 @@
     $row = oci_fetch_array($stid,OCI_ASSOC);
     if(!empty($row))
     {
+    	$_SESSION['errorMessage']="";
     	$_SESSION['name']=$uName;
+    	echo "connection successful";
     }
     else
     {
     	$_SESSION['errorMessage']="invalid username or password";
     	header("Location: login.php");
-    	exit();
+    	exit;
     }
     
     oci_free_statement($stid);

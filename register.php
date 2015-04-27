@@ -18,22 +18,24 @@
 			if($password==$rePassword)
 			{
 				$conn = oci_connect('username', 'password', 
-	 			'(DESCRIPTION=
-	 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+				'(DESCRIPTION=
+				(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 				
-		        $query = "INSERT INTO users 
-		        		  VALUES('$userID',
-		        		  		 '$firstName',
-		        		  		 '$lastName',
-		        		  		 '$password')";
+		        $query = "SELECT * FROM users";
 		        
 		        $stid = oci_parse($conn,$query);
 		        oci_execute($stid,OCI_DEFAULT);
 		        
+		        if(!empty($row))
+			    {
+			    	echo "connection successful";
+			    }
+		        
 		        oci_free_statement($stid);
 		        oci_close($conn); 
 		        
-		        header('Location: login.php');	
+		        //header('Location: login.php');	
+		        //exit;
 			}
 			else
 			{
