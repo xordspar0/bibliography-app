@@ -37,7 +37,7 @@
 			}
 			else
 			{
-				$errorMessage="Passwords do not match."
+				$errorMessage="Passwords do not match.";
 			}
  		}
  	}
@@ -50,7 +50,6 @@
 	</head>
 	<body>
 	 	<h1>Register</h1>
-	
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 	  	User-ID: <br><input type="text" name="userID">
 		<br>
