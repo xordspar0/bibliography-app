@@ -1,6 +1,46 @@
 <!DOCTYPE HTML>
 <?php
-	session_start();
+	$errorMessage="";
+ 	if($_SERVER['REQUEST_METHOD']=="POST")
+ 	{
+ 		if(empty($_POST['userID']) or empty($_POST['password']))
+ 		{
+ 			$errorMessage="User ID and password are required";	
+ 		}
+ 		else
+ 		{
+ 			$userID=$_POST['userID'];
+			$firstName=$_POST['firstName'];
+			$lastName=$_POST['lastName'];
+			$password=$_POST['password'];
+			$rePassword=$_POST['rePassword'];
+			
+			if($password==$rePassword)
+			{
+				$conn = oci_connect('username', 'password', 
+	 			'(DESCRIPTION=
+	 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+				
+		        $query = "INSERT INTO users 
+		        		  VALUES('$userID',
+		        		  		 '$firstName',
+		        		  		 '$lastName',
+		        		  		 '$password')";
+		        
+		        $stid = oci_parse($conn,$query);
+		        oci_execute($stid,OCI_DEFAULT);
+		        
+		        oci_free_statement($stid);
+		        oci_close($conn); 
+		        
+		        header('Location: login.php');	
+			}
+			else
+			{
+				$errorMessage="Passwords do not match."
+			}
+ 		}
+ 	}
  ?>
 <html>
 	<head>
@@ -11,7 +51,7 @@
 	<body>
 	 	<h1>Register</h1>
 	
-		<form action="login.php" method="post">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 	  	User-ID: <br><input type="text" name="userID">
 		<br>
   		First: <br><input type="text" name="firstName">
@@ -24,6 +64,6 @@
 		<br>
 	  	<input id="button" type="submit" name="register" value="Register">
 	  	
-	  	<?php echo $_SESSION['errorMessage'];?>
+	  	<?php echo $errorMessage;?>
 	</body>
 </html>
