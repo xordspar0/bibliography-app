@@ -2,41 +2,45 @@
 <?php
 session_start();
 
-if(empty($_POST['userID']) or empty($_POST['password']))
+if($_POST['userID']==null)
 {
-	$_SESSION['errorMessage']="User ID and password are required";
-	header('Location: register.php');
-}
-else
-{
-	$userID=$_POST['userID'];
-	$firstName=$_POST['firstName'];
-	$lastName=$_POST['lastName'];
-	$password=$_POST['password'];
-	$rePassword=$_POST['rePassword'];
-		
-	if($password==$rePassword)
+	if(empty($_POST['userID']) or empty($_POST['password']))
 	{
-		$conn = oci_connect('username', 'password', 
- 		'(DESCRIPTION=
- 		(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		
-        $query = "INSERT INTO users 
-        		  VALUES('$userID',
-        		  		 '$firstName',
-        		  		 '$lastName',
-        		  		 '$password')";
-	        
-        $stid = oci_parse($conn,$query);
-        oci_execute($stid,OCI_DEFAULT);
-        
-        oci_free_statement($stid);
-        oci_close($conn); 
+		$_SESSION['errorMessage']="User ID and password are required";
+		header('Location: register.php');
 	}
 	else
 	{
-		$_SESSION['errorMessage']="Passwords do not match.";\
-		header('Location: register.php');
+		$userID=$_POST['userID'];
+		$firstName=$_POST['firstName'];
+		$lastName=$_POST['lastName'];
+		$password=$_POST['password'];
+		$rePassword=$_POST['rePassword'];
+			
+		if($password==$rePassword)
+		{
+			$conn = oci_connect('username', 'password', 
+	 		'(DESCRIPTION=
+	 		(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+			
+	        $query = "INSERT INTO users 
+	        		  VALUES('$userID',
+	        		  		 '$firstName',
+	        		  		 '$lastName',
+	        		  		 '$password')";
+		        
+	        $stid = oci_parse($conn,$query);
+	        oci_execute($stid,OCI_DEFAULT);
+	        
+	        
+	        oci_free_statement($stid);
+	        oci_close($conn); 
+		}
+		else
+		{
+			$_SESSION['errorMessage']="Passwords do not match.";\
+			header('Location: register.php');
+		}
 	}
 }
  		
