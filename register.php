@@ -35,6 +35,10 @@
 		        
 		        header('Location: login.php');	
 			}
+			else
+			{
+				$errorMessage="Passwords do not match.";
+			}
  		}
  	}
  ?>
