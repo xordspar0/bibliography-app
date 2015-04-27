@@ -38,7 +38,7 @@ if($_POST['userID']==null)
 		}
 		else
 		{
-			$_SESSION['errorMessage']="Passwords do not match.";\
+			$_SESSION['errorMessage']="Passwords do not match.";
 			header('Location: register.php');
 		}
 	}
