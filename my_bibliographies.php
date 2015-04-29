@@ -13,27 +13,27 @@
     FROM bibliographies, users 
     WHERE users.userID = (ID of the current user) AND users.userID = bibliographies.userID"-->
     <?php
-        session_start();
-        $currentUser=$_SESSION['name'];
-        $conn = oci_connect('username', 'password', 
-    	 			'(DESCRIPTION=
-    	 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-    				
-    		        $query = "SELECT bibliographies.name 
-                              FROM bibliographies, users 
-                              WHERE users.userID = '$currentUser' AND users.userID = bibliographies.userID";
-    		        
-    		        $stid = oci_parse($conn,$query);
-    		        oci_execute($stid,OCI_DEFAULT);
+//        session_start();
+//        $currentUser=$_SESSION['name'];
+//        $conn = oci_connect('username', 'password', 
+//    	 			'(DESCRIPTION=
+//    	 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+//    				
+//    		        $query = "SELECT bibliographies.name 
+//                              FROM bibliographies, users 
+//                              WHERE users.userID = '$currentUser' AND users.userID = bibliographies.userID";
+//    		        
+//    		        $stid = oci_parse($conn,$query);
+//    		        oci_execute($stid,OCI_DEFAULT);
     ?>
        <!--These are test widths to be changed later-->
-    <table width="1000" border="1">  
+    <table width="900" border="1">  
         <tr>  
         <th width="91"> <div align="center">BibliographyID </div></th>  
         <th width="59"> <div align="center">Name </div></th>  
         <th width="98"> <div align="center">OwnerID </div></th>  
-        <th width="198"> <div align="center">Last Modified </div></th>  
-        <th width="150"> <div align="center">Date Created </div></th>  
+        <th width="120"> <div align="center">Last Modified </div></th>  
+        <th width="120"> <div align="center">Date Created </div></th>  
         <th width="30"> <div align="center">Delete</div></th>
         </tr>  
     <?php   

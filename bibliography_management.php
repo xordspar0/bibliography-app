@@ -23,8 +23,8 @@
     }
     else
     {
-	    oci_free_statement($stid);
-    	oci_close($conn); 
+	    //oci_free_statement($stid);
+    	//oci_close($conn); 
     	$_SESSION['errorMessage']="invalid username or password";
     	header("Location: login.php");
     	exit;
