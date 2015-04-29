@@ -13,18 +13,16 @@
     FROM bibliographies, users 
     WHERE users.userID = (ID of the current user) AND users.userID = bibliographies.userID"-->
     <?php
-//        session_start();
-//        $currentUser=$_SESSION['name'];
-//        $conn = oci_connect('username', 'password', 
-//    	 			'(DESCRIPTION=
-//    	 			(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-//    				
-//    		        $query = "SELECT bibliographies.name 
-//                              FROM bibliographies, users 
-//                              WHERE users.userID = '$currentUser' AND users.userID = bibliographies.userID";
-//    		        
-//    		        $stid = oci_parse($conn,$query);
-//    		        oci_execute($stid,OCI_DEFAULT);
+        session_start();
+        $currentUser=$_SESSION['name'];
+        $conn = oci_connect($dbuser, $dbpass, $dbconn);
+    				
+    		        $query = "SELECT bibliographies.name 
+                              FROM bibliographies, users 
+                              WHERE users.userID = '$currentUser' AND users.userID = bibliographies.userID";
+    		        
+    		        $stid = oci_parse($conn,$query);
+    		        oci_execute($stid,OCI_DEFAULT);
     ?>
        <!--These are test widths to be changed later-->
     <table width="900" border="1">  
