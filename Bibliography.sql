@@ -1,12 +1,13 @@
-﻿DROP TABLE users CASCADE CONSTRAINTS;
+
+DROP TABLE users CASCADE CONSTRAINTS;
 CREATE TABLE users
 (userID	varchar(15) NOT NULL,
  fName	varchar(15),
  lName varchar(15),
- password varchar(15) NOT NULL,
- PRIMARY KEY (uID));
+ pword varchar(15) NOT NULL,
+ PRIMARY KEY (userID));
 
-INSERT INTO users VALUES('testID', 'John', 'Doe', 'testPass')
+INSERT INTO users VALUES('testID', 'John', 'Doe', 'testPass');
 
 DROP TABLE bibliographies CASCADE CONSTRAINTS;
 CREATE TABLE bibliographies
@@ -33,7 +34,7 @@ DROP TABLE books CASCADE CONSTRAINTS;
 CREATE TABLE books
 (cID	INT NOT NULL,
  city	varchar(20),
- publisher	varchar(20)
+ publisher	varchar(20),
  yearPublished	INT,
  PRIMARY KEY (cID),
  FOREIGN KEY (cID) REFERENCES citations(cID));
