@@ -18,17 +18,10 @@
 			
 			if($password==$rePassword)
 			{
-<<<<<<< Updated upstream
 				$conn = dbconnect();
 				
 		        $query = "INSERT INTO users 
 						  VALUES(:userID, :firstName, :lastName, :password)";
-=======
-				$conn = oci_connect($dbuser, $dbpass, $dbconn);
-				
-		        $query = "INSERT INTO users 
-		        		  VALUES(:userID, :firstName, :lastName, :password)";
->>>>>>> Stashed changes
 		        
 		        $stid = oci_parse($conn,$query);
 				oci_bind_by_name($stid, ":userID", $userID);
