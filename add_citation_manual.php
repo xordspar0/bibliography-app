@@ -1,4 +1,30 @@
 <!Doctype html>
+<?php
+	$currentBib=$_GET["bID"];
+//	if($_SERVER["REQUEST_METHOD"]=="POST")
+//	{
+		if(isset($_POST['medium']))	
+		{
+			$medium=$_POST['medium'];
+			switch($medium)
+			{
+				case "book": 
+					include("add_book.php");
+					break;
+				case "periodical":
+					include("add_periodical.php");
+					break;
+				case "web":
+					include("add_web.php");
+					break;
+			}
+		}
+//	}
+//	else
+	//{
+	//	$errorMessage="";
+	//}
+?>
 <html>
 
 	<head>
@@ -8,28 +34,39 @@
 	</head>
 
 	<body>
+		<!--TODO: Have the users citations in the selected bibliography displayed in MLA format-->
+		<p>
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+				<select name="medium">
+					<option value="">Select...</option>
+					<option value="book">Book</option>
+					<option value="periodical">Periodical</option>
+					<option value="web">Web</option>
+				</select>
+			</form>
+		</p>
 
 	<?php require 'header.php' ?>
-
-		<!--TODO: Differentiate between source types-->
-		<!--TODO: Add the rest of the attributes to the form-->
-		<form action="get_web_source.php" method="post">
-			<table>
-				<tr>
-					<td>Title:</td>
-					<td><input type="text" name="title" required /></td>
-				</tr>
-				<tr>
-					<td>Author:</td>
-					<td><input type="text" name="author" required /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Add" /></td>
-				</tr>
-			</table>
-		</form>
-
+	<?php
+		if(isset($_POST['medium']))
+		{
+			echo "test";
+			?>
+	<?php
+			}
+			else if($_POST['medium']=="periodical")
+			{
+	?>
+				
+	<?php
+			}
+		}
+		else
+		{
+			$errorMessage="PLease select a medium";
+		}
+	?>
+	<?php echo $errorMessage;?>
 	<?php require 'footer.php' ?>
 
 	</body>

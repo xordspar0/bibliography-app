@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+<<<<<<< Updated upstream
 	require "dbconnect.php";
 	
 	$uName=$_POST['name'];
@@ -12,6 +13,17 @@
     $stid = oci_parse($conn, $query);
     oci_bind_by_name($stid, ":uName", $name);
     oci_bind_by_name($stid, ":pWord", $password);
+=======
+	require('config.php');
+	$uName=$_POST['name'];
+	$pWord=$_POST['password'];
+	
+	$conn = oci_connect($dbuser, $dbpass, $dbconn);
+
+    $query = "SELECT users.userID, users.pword FROM users WHERE users.pword='$pWord' AND users.userID='$uName' ";
+    
+    $stid = oci_parse($conn,$query);
+>>>>>>> Stashed changes
     oci_execute($stid,OCI_DEFAULT);
     
     session_destroy();

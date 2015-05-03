@@ -1,10 +1,17 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 DROP TABLE users CASCADE CONSTRAINTS;
 CREATE TABLE users
 (userID	varchar(15) NOT NULL,
  fName	varchar(15),
  lName varchar(15),
+<<<<<<< Updated upstream
  pword varchar(15) NOT NULL,
+=======
+ password varchar(15) NOT NULL,
+>>>>>>> Stashed changes
  PRIMARY KEY (userID));
 
 INSERT INTO users VALUES('testID', 'John', 'Doe', 'testPass');
