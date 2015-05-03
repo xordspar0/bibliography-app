@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< Updated upstream
 <head>
     <title>My Bibliographies</title>
 		<meta charset="utf-8" />
@@ -45,4 +44,3 @@
         ?>
     </body>
 </html>
->>>>>>> Stashed changes
