@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <?php
-	require('config.php');
+	require "dbconnect.php";
+	
 	$uName=$_POST['name'];
 	$pWord=$_POST['password'];
 	
-	$conn = oci_connect($dbuser, $dbpass, $dbconn);
+	$conn = dbconnect();
 
-    $query = "SELECT users.userID, users.password FROM users WHERE users.password='$pWord' AND users.userID='$uName' ";
-    
-    $stid = oci_parse($conn,$query);
+    $query = "SELECT users.userID, users.password FROM users
+              WHERE users.userID=:uName AND users.password=:pWord";
+    $stid = oci_parse($conn, $query);
+    oci_bind_by_name($stid, ":uName", $name);
+    oci_bind_by_name($stid, ":pWord", $password);
     oci_execute($stid,OCI_DEFAULT);
     
     session_destroy();

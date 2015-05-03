@@ -18,10 +18,10 @@
 			
 			if($password==$rePassword)
 			{
-				$conn = oci_connect($dbuser, $dbpass, $dbconn);
+				$conn = dbconnect();
 				
 		        $query = "INSERT INTO users 
-		        	  VALUES(:userID, :firstName, :lastName, :password)";
+						  VALUES(:userID, :firstName, :lastName, :password)";
 		        
 		        $stid = oci_parse($conn,$query);
 				oci_bind_by_name($stid, ":userID", $userID);

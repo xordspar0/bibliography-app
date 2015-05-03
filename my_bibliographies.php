@@ -13,16 +13,16 @@
     FROM bibliographies, users 
     WHERE users.userID = (ID of the current user) AND users.userID = bibliographies.userID"-->
     <?php
+        require "dbconnect.php";
         session_start();
         $currentUser=$_SESSION['name'];
-        $conn = oci_connect($dbuser, $dbpass, $dbconn);
+        $conn = dbconnect();
     				
-    		        $query = "SELECT bibliographies.name 
-                              FROM bibliographies, users 
-                              WHERE users.userID = '$currentUser' AND users.userID = bibliographies.userID";
-    		        
-    		        $stid = oci_parse($conn,$query);
-    		        oci_execute($stid,OCI_DEFAULT);
+    	$query = "SELECT bibliographies.name FROM bibliographies, users 
+                  WHERE users.userID = :currentUser AND users.userID = bibliographies.userID";
+    	$stid = oci_parse($conn,$query);
+    	oci_bind_by_name($stid, ":currentUser", $currentUser);
+    	oci_execute($stid,OCI_DEFAULT);
     ?>
        <!--These are test widths to be changed later-->
     <table width="900" border="1">  
