@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <?php
+	require "dbconnect.php";
+	
 	$uName=$_POST['name'];
 	$pWord=$_POST['password'];
 	
-	$conn = oci_connect('username', 'password', 
-	'(DESCRIPTION=
-	(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+	$conn = dbconnect();
 
-    $query = "SELECT users.userID, users.password FROM users WHERE users.password='$pWord' AND users.userID='$uName' ";
-    
-    $stid = oci_parse($conn,$query);
+    $query = "SELECT users.userID, users.password FROM users
+              WHERE users.userID=:uName AND users.password=:pWord";
+    $stid = oci_parse($conn, $query);
+    oci_bind_by_name($stid, ":uName", $name);
+    oci_bind_by_name($stid, ":pWord", $password);
     oci_execute($stid,OCI_DEFAULT);
     
     session_destroy();
@@ -23,8 +25,6 @@
     }
     else
     {
-	    //oci_free_statement($stid);
-    	//oci_close($conn); 
     	$_SESSION['errorMessage']="invalid username or password";
     	header("Location: login.php");
     	exit;

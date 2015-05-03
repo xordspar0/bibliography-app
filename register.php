@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <?php
+	require ('config.php');
 	$errorMessage="";
  	if($_SERVER['REQUEST_METHOD']=="POST")
  	{
@@ -17,18 +18,19 @@
 			
 			if($password==$rePassword)
 			{
-				$conn = oci_connect('username', 'password', 
-				'(DESCRIPTION=
-				(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+				$conn = dbconnect();
 				
 		        $query = "INSERT INTO users 
-		        		  VALUES('$userID',
-		        		  		 '$firstName',
-		        		  		 '$lastName',
-		        		  		 '$password')";
+						  VALUES(:userID, :firstName, :lastName, :password)";
 		        
 		        $stid = oci_parse($conn,$query);
+				oci_bind_by_name($stid, ":userID", $userID);
+				oci_bind_by_name($stid, ":firstName", $firstName);
+				oci_bind_by_name($stid, ":lastName", $lastName);
+				oci_bind_by_name($stid, ":password", $password);
 		        oci_execute($stid,OCI_DEFAULT);
+
+				oci_commit($conn);
 		        
 		        oci_free_statement($stid);
 		        oci_close($conn); 
