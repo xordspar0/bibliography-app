@@ -17,7 +17,6 @@ $pWord="";
 	<header><h1>Login</h1></header>
 	<body>
 		<br>
-		<span class="error">* <?php echo $errorMessage;?></span><br>
 		<form action="bibliography_management.php" method="post">
 		Name: <br><input type="text" name="name"><br>
 		Password: <br><input type="password" name="password"><br><br>
