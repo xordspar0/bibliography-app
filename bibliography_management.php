@@ -1,4 +1,4 @@
-<?php require require_login.php ?>
+<?php require "require_login.php"; ?>
 <!DOCTYPE html>
 <html>
 	<head>

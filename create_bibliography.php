@@ -1,8 +1,9 @@
-<!Doctype html>
 <?php
-	session_start();
+	require "require_login.php";
+	require "dbconnect.php";
+	
 	$currentUser=$_SESSION['name'];
-	require ("dbconnect.php");
+
 	
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
@@ -31,6 +32,7 @@
         header("Location: bibliography_management.php");
 	}
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Create a Bibliography</title>
