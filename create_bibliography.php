@@ -1,6 +1,6 @@
 <?php
 	require "require_login.php";
-	require "dbconnect.php";
+	require "config.php";
 	
 	$currentUser=$_SESSION['name'];
 
@@ -10,7 +10,7 @@
 		$bID=$_POST['idNum'];
 		$bName=$_POST['bibName'];
 		
-		$conn=dbconnect();
+		$conn= oci_connect($dbuser, $dbpass, $dbconn);
 		
 		$query="INSERT INTO bibliographies
 				VALUES(:bid, 

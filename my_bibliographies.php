@@ -14,10 +14,10 @@
         FROM bibliographies, users 
         WHERE users.userID = (ID of the current user) AND users.userID = bibliographies.userID"-->
         <?php
-            require "dbconnect.php";
+            require "config.php";
             session_start();
             $currentUser=$_SESSION['name'];
-            $conn = dbconnect();
+            $conn = oci_connect($dbuser, $dbpass, $dbconn);
     
         		        $query = "SELECT *  
                                   FROM bibliographies 
