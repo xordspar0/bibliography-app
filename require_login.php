@@ -3,7 +3,7 @@
 	
 	session_start();
 	
-	if(!empty($_POST['name']) and !empty($_POST['password']))
+	if(!empty($postVars['name']) and !empty($postVars['password']))
 	{
 	    $uName=$_POST['name'];
 	    $pWord=$_POST['password'];

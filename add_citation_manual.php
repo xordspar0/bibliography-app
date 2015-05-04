@@ -1,4 +1,5 @@
 <?php
+	$postVars = $_POST;
 	require "require_login.php";
 	$currentBib=$_GET["bID"];
 //	if($_SERVER["REQUEST_METHOD"]=="POST")

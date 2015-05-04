@@ -1,4 +1,7 @@
-<?php require "require_login.php"; ?>
+<?php
+$postVars = $_POST;
+require "require_login.php";
+?>
 <!DOCTYPE html>
 <html>
 	<head>

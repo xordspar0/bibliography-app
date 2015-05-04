@@ -1,4 +1,5 @@
 <?php
+	$postVars = $_POST;
 	require "require_login.php";
 	require "config.php";
 	
