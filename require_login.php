@@ -34,7 +34,7 @@
         oci_free_statement($stid);
         oci_close($conn);
 	}
-	elseif(!empty($_SESSION['name']))
+	elseif(empty($_SESSION['name']))
 	{
 	    $_SESSION['errorMessage']="login required";
 	    header("Location: login.php");
