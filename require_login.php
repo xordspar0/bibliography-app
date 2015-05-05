@@ -8,8 +8,8 @@
 	    $uName=$_POST['name'];
 	    $pWord=$_POST['password'];
 	    $conn = oci_connect($dbuser, $dbpass, $dbconn);
-        $query = "SELECT users.userID, users.password FROM users
-                  WHERE users.userID=:uName AND users.password=:pWord";
+        $query = "SELECT users.userID, users.pword FROM users
+                  WHERE users.userID=:uName AND users.pword=:pWord";
         $stid = oci_parse($conn, $query);
         oci_bind_by_name($stid, ":uName", $uName);
         oci_bind_by_name($stid, ":pWord", $password);
