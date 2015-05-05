@@ -1,6 +1,5 @@
 <?php
 	$postVars = $_POST;
-	$currentBib = $_GET["bID"];
 	require "require_login.php";
 	require "config.php";
 	
