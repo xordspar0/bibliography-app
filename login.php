@@ -5,6 +5,12 @@ if($_SESSION['errorMessage'] == null)
 {
 	$_SESSION['errorMessage']="";
 }
+else
+{
+	$errorMessage = $_SESSION['errorMessage'];
+	$_SESSION['errorMessage']="";
+}
+
 $uName="";
 $pWord="";
 ?>
@@ -17,13 +23,12 @@ $pWord="";
 	<header><h1>Login</h1></header>
 	<body>
 		<br>
-		<span class="error">* <?php echo $errorMessage;?></span><br>
 		<form action="bibliography_management.php" method="post">
 		Name: <br><input type="text" name="name"><br>
 		Password: <br><input type="password" name="password"><br><br>
 		<input id="button" type="submit" name="submit" value="Log-In">
 		</form><br>
-		<?php echo $_SESSION['errorMessage']; ?><br>
+		<?php echo $errorMessage; ?><br>
 		<a href="register.php">Register</a>
 	</body>
 </html>

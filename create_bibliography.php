@@ -1,15 +1,17 @@
-<!Doctype html>
 <?php
-	session_start();
+	$postVars = $_POST;
+	require "require_login.php";
+	require "config.php";
+	
 	$currentUser=$_SESSION['name'];
-	require ("dbconnect.php");
+
 	
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
 		$bID=$_POST['idNum'];
 		$bName=$_POST['bibName'];
 		
-		$conn=dbconnect();
+		$conn= oci_connect($dbuser, $dbpass, $dbconn);
 		
 		$query="INSERT INTO bibliographies
 				VALUES(:bid, 
@@ -31,6 +33,7 @@
         header("Location: bibliography_management.php");
 	}
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Create a Bibliography</title>

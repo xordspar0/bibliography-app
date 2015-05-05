@@ -18,7 +18,7 @@
 			
 			if($password==$rePassword)
 			{
-				$conn = dbconnect();
+				$conn = oci_connect($dbuser, $dbpass, $dbconn);
 				
 		        $query = "INSERT INTO users 
 						  VALUES(:userID, :firstName, :lastName, :password)";
