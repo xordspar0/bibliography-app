@@ -12,7 +12,7 @@
                   WHERE users.userID=:uName AND users.pword=:pWord";
         $stid = oci_parse($conn, $query);
         oci_bind_by_name($stid, ":uName", $uName);
-        oci_bind_by_name($stid, ":pWord", $pord);
+        oci_bind_by_name($stid, ":pWord", $pWord);
         oci_execute($stid,OCI_DEFAULT);
         
         session_destroy();
