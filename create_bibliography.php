@@ -49,7 +49,7 @@
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<table>
 				<tr>
-					<td>Database Name:</td>
+					<td>Bibliography Name:</td>
 					<td><input type="text" name="bibName" required /></td>
 				</tr>
 				<tr>

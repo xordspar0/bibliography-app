@@ -37,7 +37,7 @@
                    echo "<a href='add_citation_manual.php?bID=" . $objResult['bID'] . "'>" . $objResult['name'] . "</a>";
                }
             }
-            oci_commit($stid);
+            
             oci_free_statement($stid);
             oci_close($conn);
         ?>

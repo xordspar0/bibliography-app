@@ -60,9 +60,9 @@
   		<br>
 	  	Last: <br><input type="text" name="lastName">
 	  	<br>
-	  	Password: <br><input type="text" name="password">
+	  	Password: <br><input type="password" name="password">
 		<br>
-	  	Re-Enter Password: <br><input type="text" name="rePassword">
+	  	Re-Enter Password: <br><input type="password" name="rePassword">
 		<br>
 	  	<input id="button" type="submit" name="register" value="Register">
 	  	
