@@ -22,21 +22,21 @@
             $currentUser=$_SESSION['name'];
             $conn = oci_connect($dbuser, $dbpass, $dbconn);
     
-        		        $query = "SELECT *  
-                                  FROM bibliographies 
-                                  WHERE userID = :currentUser";
+	        $query = "SELECT *  
+                      FROM bibliographies 
+                      WHERE userID = :currentUser";
         		        
-    	        $stid = oci_parse($conn,$query);
-    			oci_bind_by_name($stid, ":currentUser", $currentUser);
-            	oci_execute($stid,OCI_DEFAULT);
-                	
-                while($objResult = oci_fetch_array($stid,OCI_BOTH))  
-                {
-                   foreach($objResult as $item)
-                   {
-                       echo "<a href='add_citation_manual.php?bID=" . $objResult['bID'] . "'>" . $objResult['name'] . "</a>";
-                   }
-                }
+	        $stid = oci_parse($conn,$query);
+			oci_bind_by_name($stid, ":currentUser", $currentUser);
+        	oci_execute($stid,OCI_DEFAULT);
+            	
+            while($objResult = oci_fetch_array($stid,OCI_BOTH))  
+            {
+               foreach($objResult as $item)
+               {
+                   echo "<a href='add_citation_manual.php?bID=" . $objResult['bID'] . "'>" . $objResult['name'] . "</a>";
+               }
+            }
             oci_commit($stid);
             oci_free_statement($stid);
             oci_close($conn);

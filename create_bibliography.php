@@ -14,15 +14,13 @@
 		$conn= oci_connect($dbuser, $dbpass, $dbconn);
 		
 		$query="INSERT INTO bibliographies
-				VALUES(:bid, 
+				VALUES(seq_bibliography.nextval, 
 					   :owner,
-					   MAY-05-2015,
-					   MAY-05-2015)";
+					   :bibName)";
 				
 		$stid = oci_parse($conn, $query);
-		oci_bind_by_name($stid, ":bID", $bID);
 		oci_bind_by_name($stid, ":owner", $currentUser);
-		oci_bind_by_name($stid, ":bibName", $bibName);
+		oci_bind_by_name($stid, ":bibName", $bName);
 		
 		oci_execute($stid,OCI_DEFAULT);
 		
@@ -53,10 +51,6 @@
 				<tr>
 					<td>Database Name:</td>
 					<td><input type="text" name="bibName" required /></td>
-				</tr>
-				<tr>
-					<td>Database ID:</td>
-					<td><input type="text" name="idNum" required /></td>
 				</tr>
 				<tr>
 					<td></td>

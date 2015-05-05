@@ -12,8 +12,6 @@ DROP TABLE bibliographies CASCADE CONSTRAINTS;
 CREATE TABLE bibliographies
 (bID 	INT NOT NULL,
  owner	varchar(15) NOT NULL,
- dateModified 	DATE,
- dateCreated 	DATE,
  name 	varchar(15),
  PRIMARY KEY (bID),
  FOREIGN KEY (owner) REFERENCES users(userID));
