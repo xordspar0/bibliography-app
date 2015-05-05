@@ -44,7 +44,7 @@
 
 		<!--TODO: Create the bibliography and store it in the database before going
 			to the add citation page-->
-		<h2></h2>
+		<h2>Create a New Bibliography</h2>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<table>
 				<tr>
