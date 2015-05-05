@@ -25,6 +25,63 @@
 	//{
 	//	$errorMessage="";
 	//}
+	//Print Book Citations
+	$conn= oci_connect($dbuser, $dbpass, $dbconn);
+		
+	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
+			FROM citations, books, bibliographies
+			WHERE citations.cID = books.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while($bookResult = oci_fetch_array($stid, OCI_BOTH))
+	{
+		echo $bookResult['authorLast'].', '.$bookResult['authorFirst'].'. <i>',$bookResult['title'].'.</i> '.$bookResult['city'].': '.$bookResult['publisher'].', '.$bookResult['yearPublished'].'. Print.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    oci_close($conn);
+    //Print Periodical Citations
+    $conn= oci_connect($dbuser, $dbpass, $dbconn);
+		
+	$query="SELECT authorLast, authorFirst, title, name, pubDate, pageNum
+			FROM citations, periodicals, bibliographies
+			WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while($periodicalResult = oci_fetch_array($stid, OCI_BOTH))
+	{
+		echo $periodicalResult['authorLast'].', '.$periodicalResult['authorFirst'].'. "',$periodicalResult['title'].'" <i>'.$periodicalResult['name'].'</i> '.$periodicalResult['pubDate'].': '.$periodicalResult['pageNum'].'. Print.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    oci_close($conn);
+    //Print Web Citations
+    $conn= oci_connect($dbuser, $dbpass, $dbconn);
+		
+	$query="SELECT authorLast, authorFirst, title, name, pubDate
+			FROM citations, website, bibliographies
+			WHERE citations.cID = website.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while($webResult = oci_fetch_array($stid, OCI_BOTH))
+	{
+		echo $webResult['authorLast'].'', ''.$webResult['authorFirst'].'. "',$webResult['title'].'" <i>'.$webResult['name'].'</i> '.$webResult['pubDate'].': n. pag. Web.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    oci_close($conn);
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,6 @@
 <?php
 	$postVars = $_POST;
+	$currentBib = $_GET["bID"];
 	require "require_login.php";
 	require "config.php";
 	
@@ -49,7 +50,7 @@
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 			<table>
 				<tr>
-					<td>Database Name:</td>
+					<td>Bibliography Name:</td>
 					<td><input type="text" name="bibName" required /></td>
 				</tr>
 				<tr>
