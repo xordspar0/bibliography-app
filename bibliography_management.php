@@ -15,7 +15,7 @@ require "require_login.php";
 
 		<ul class="actions">
 			<li><a href="my_bibliographies.php">My Bibliographies</a></li>
-			<li><a href="create_new_bibliography.php">Create a new Bibliography</a></li>
+			<li><a href="create_bibliography.php">Create a new Bibliography</a></li>
 		</ul>
 
 		<?php require 'footer.php' ?>
