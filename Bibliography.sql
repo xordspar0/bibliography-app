@@ -15,6 +15,12 @@ CREATE TABLE bibliographies
  name 	varchar(15),
  PRIMARY KEY (bID),
  FOREIGN KEY (owner) REFERENCES users(userID));
+ 
+ CREATE SEQUENCE seq_bibliography
+ MINVALUE 1
+ START WITH 1
+ INCREMENT BY 1
+ CACHE 10;
 
 DROP TABLE citations CASCADE CONSTRAINTS;
 CREATE TABLE citations
