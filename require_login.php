@@ -5,14 +5,14 @@
 	
 	if(!empty($postVars['name']) and !empty($postVars['password']))
 	{
-	    $uName=$_POST['name'];
-	    $pWord=$_POST['password'];
+	    $uName=$postVars['name'];
+	    $pWord=$postVars['password'];
 	    $conn = oci_connect($dbuser, $dbpass, $dbconn);
         $query = "SELECT users.userID, users.pword FROM users
                   WHERE users.userID=:uName AND users.pword=:pWord";
         $stid = oci_parse($conn, $query);
         oci_bind_by_name($stid, ":uName", $uName);
-        oci_bind_by_name($stid, ":pWord", $password);
+        oci_bind_by_name($stid, ":pWord", $pord);
         oci_execute($stid,OCI_DEFAULT);
         
         session_destroy();
