@@ -5,6 +5,12 @@ if($_SESSION['errorMessage'] == null)
 {
 	$_SESSION['errorMessage']="";
 }
+else
+{
+	$errorMessage = $_SESSION['errorMessage'];
+	$_SESSION['errorMessage']="";
+}
+
 $uName="";
 $pWord="";
 ?>
@@ -22,7 +28,7 @@ $pWord="";
 		Password: <br><input type="password" name="password"><br><br>
 		<input id="button" type="submit" name="submit" value="Log-In">
 		</form><br>
-		<?php echo $_SESSION['errorMessage']; ?><br>
+		<?php echo $errorMessage; ?><br>
 		<a href="register.php">Register</a>
 	</body>
 </html>
