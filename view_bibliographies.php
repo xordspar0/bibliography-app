@@ -10,7 +10,11 @@
     		<link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <?php require "header.php";
+        <?php require "header.php"; ?>
+        
+        <h1>My Bibliographies</h1>
+        
+        <?php
             require "config.php";
             session_start();
             $currentUser=$_SESSION['name'];
