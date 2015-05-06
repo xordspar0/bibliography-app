@@ -101,7 +101,7 @@
 			<option value="web">Web</option>
 		</select>
 		
-		<form id="book" action="" method="post" style="display: none;">
+		<form id="book" action="create_citation.php?bID=<?php echo $currentBib; ?>&type=book" method="post" style="display: none;">
 			<table>
 				<tr>
 					<td>Book Title:</td>
@@ -134,7 +134,7 @@
 			</table>
 		</form>
 				
-		<form id="periodical" action="" method="post" style="display: none;">
+		<form id="periodical" action="create_citation.php?bID=<?php echo $currentBib; ?>&type=periodical" method="post" style="display: none;">
 			<table>
 				<tr>
 					<td>Periodical Title:</td>
@@ -163,7 +163,7 @@
 			</table>
 		</form>
 				
-		<form id="web" action="" method="post" style="display: none;">
+		<form id="web" action="create_citation.php?bID=<?php echo $currentBib; ?>&type=web" method="post" style="display: none;">
 			<table>
 				<tr>
 					<td>Web Source Title:</td>
