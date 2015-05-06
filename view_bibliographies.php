@@ -35,7 +35,22 @@
             
             oci_free_statement($stid);
             oci_close($conn);
+        ?>
         
-        require "footer.php"; ?>
+        <h2>Create a New Bibliography</h2>
+		<form action="create_bibliography.php" method="post">
+			<table>
+				<tr>
+					<td>Bibliography Name:</td>
+					<td><input type="text" name="bibName" required /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Add" /></td>
+				</tr>
+			</table>
+		</form>
+        
+        <?php require "footer.php"; ?>
     </body>
 </html>

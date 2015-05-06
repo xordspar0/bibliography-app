@@ -28,36 +28,6 @@
 		        
         oci_free_statement($stid);
         oci_close($conn); 
-        header("Location: management.php");
+        header("Location: view_bibliographies.php");
 	}
 ?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Create a Bibliography</title>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="main.css" />
-	</head>
-
-	<body>
-
-	<?php require 'header.php' ?>
-
-		<!--TODO: Create the bibliography and store it in the database before going
-			to the add citation page-->
-		<h2>Create a New Bibliography</h2>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-			<table>
-				<tr>
-					<td>Bibliography Name:</td>
-					<td><input type="text" name="bibName" required /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Add" /></td>
-				</tr>
-			</table>
-		</form>
-	<?php require 'footer.php' ?>
-	</body>
-</html>
