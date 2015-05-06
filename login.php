@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <?php
 session_start();
 if($_SESSION['errorMessage'] == null)
@@ -14,6 +13,7 @@ else
 $uName="";
 $pWord="";
 ?>
+<!doctype html>
 <html>
 	<head>
 		<title>Login</title>
