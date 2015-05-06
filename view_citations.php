@@ -84,13 +84,16 @@
 <html>
 
 	<head>
-		<title>Add a citation manually</title>
+		<title>View Citations</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="main.css" />
 	</head>
 
 	<body>
 		<?php require 'header.php' ?>
+		
+		<h1>View Citaions</h1>
+		
 		<select id="typeSelector" onchange="changeType()">
 			<option value="">Select type...</option>
 			<option value="book">Book</option>
