@@ -19,7 +19,7 @@
 	
 	$foundBib = oci_fetch_array($stid);
 	
-	if ($foundBib[2] != $currentUser) {
+	if ($foundBib[1] != $currentUser) {
 		header("Location: view_bibliographies.php");
 	}
 	
