@@ -2,86 +2,6 @@
 	$postVars = $_POST;
 	require "require_login.php";
 	$currentBib=$_GET["bID"];
-//	if($_SERVER["REQUEST_METHOD"]=="POST")
-//	{
-		if(isset($_POST['medium']))	
-		{
-			$medium=$_POST['medium'];
-			switch($medium)
-			{
-				case "book": 
-					include("add_book.php");
-					break;
-				case "periodical":
-					include("add_periodical.php");
-					break;
-				case "web":
-					include("add_web.php");
-					break;
-			}
-		}
-//	}
-//	else
-	//{
-	//	$errorMessage="";
-	//}
-	//Print Book Citations
-	$conn= oci_connect($dbuser, $dbpass, $dbconn);
-		
-	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
-			FROM citations, books, bibliographies
-			WHERE citations.cID = books.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($bookResult = oci_fetch_array($stid, OCI_BOTH))
-	{
-		echo $bookResult['authorLast'].', '.$bookResult['authorFirst'].'. <i>',$bookResult['title'].'.</i> '.$bookResult['city'].': '.$bookResult['publisher'].', '.$bookResult['yearPublished'].'. Print.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    oci_close($conn);
-    //Print Periodical Citations
-    $conn= oci_connect($dbuser, $dbpass, $dbconn);
-		
-	$query="SELECT authorLast, authorFirst, title, name, pubDate, pageNum
-			FROM citations, periodicals, bibliographies
-			WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($periodicalResult = oci_fetch_array($stid, OCI_BOTH))
-	{
-		echo $periodicalResult['authorLast'].', '.$periodicalResult['authorFirst'].'. "',$periodicalResult['title'].'" <i>'.$periodicalResult['name'].'</i> '.$periodicalResult['pubDate'].': '.$periodicalResult['pageNum'].'. Print.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    oci_close($conn);
-    //Print Web Citations
-    $conn= oci_connect($dbuser, $dbpass, $dbconn);
-		
-	$query="SELECT authorLast, authorFirst, title, name, pubDate
-			FROM citations, website, bibliographies
-			WHERE citations.cID = website.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($webResult = oci_fetch_array($stid, OCI_BOTH))
-	{
-		echo $webResult['authorLast'].'', ''.$webResult['authorFirst'].'. "',$webResult['title'].'" <i>'.$webResult['name'].'</i> '.$webResult['pubDate'].': n. pag. Web.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    oci_close($conn);
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,40 +14,115 @@
 
 	<body>
 		<!--TODO: Have the users citations in the selected bibliography displayed in MLA format-->
-		<p>
-			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-				<select name="medium">
-					<option value="">Select...</option>
-					<option value="book">Book</option>
-					<option value="periodical">Periodical</option>
-					<option value="web">Web</option>
-				</select>
-			</form>
-		</p>
-
-	<?php require 'header.php' ?>
-	<?php
-		if(isset($_POST['medium']))
-		{
-			echo "test";
-			?>
-	<?php
-			}
-			else if($_POST['medium']=="periodical")
-			{
-	?>
+		<?php require 'header.php' ?>
+		<select id="typeSelector" onchange="changeType()">
+			<option value="">Select type...</option>
+			<option value="book">Book</option>
+			<option value="periodical">Periodical</option>
+			<option value="web">Web</option>
+		</select>
+		
+		<form id="book" action="" method="post" style="display: none;">
+			<table>
+				<tr>
+					<td>Book Title:</td>
+					<td><input type="text" name="title" required /></td>
+				</tr>
+				<tr>
+					<td>Author First:</td>
+					<td><input type="text" name="first" required/></td>
+				</tr>
+				<tr>
+					<td>Author Last:</td>
+					<td><input type="text" name="last" required/></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><input type="text" name="city" required</td>
+				</tr>
+				<tr>
+					<td>Publisher:</td>
+					<td><input type="text" name="publisher" required/></td>
+				</tr>
+				<tr>
+					<td>Year Published</td>
+					<td><input type="text" name="yearPub" required</td>
+				</tr>
+				<tr>
+				    <td></td>
+				    <td><input type="submit" Value="Add"/></td>
+				</tr>
+			</table>
+		</form>
 				
-	<?php
-			}
-		}
-		else
-		{
-			$errorMessage="PLease select a medium";
-		}
-	?>
+		<form id="periodical" action="" method="post" style="display: none;">
+			<table>
+				<tr>
+					<td>Periodical Title:</td>
+					<td><input type="text" name="title" required /></td>
+				</tr>
+				<tr>
+					<td>Author First:</td>
+					<td><input type="text" name="first" required/></td>
+				</tr>
+				<tr>
+					<td>Author Last:</td>
+					<td><input type="text" name="last" required/></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><input type="text" name="city" required/></td>
+				</tr>
+				<tr>
+					<td>Periodical Name:</td>
+					<td><input type="text" name="perName" required/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Add" /></td>
+				</tr>
+			</table>
+		</form>
+				
+		<form id="web" action="" method="post" style="display: none;">
+			<table>
+				<tr>
+					<td>Web Source Title:</td>
+					<td><input type="text" name="title" required /></td>
+				</tr>
+				<tr>
+					<td>Author First:</td>
+					<td><input type="text" name="first" required/></td>
+				</tr>
+				<tr>
+					<td>Author Last:</td>
+					<td><input type="text" name="last" required/></td>
+				</tr>
+				<tr>
+				    <td>Website Name:</td>
+				    <td><input type="text" name="webName" required/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Add" /></td>
+				</tr>
+			</table>
+		</form>
+
 	<?php echo $errorMessage;?>
 	<?php require 'footer.php' ?>
-
+	
+	<script>
+		function changeType() {
+			document.getElementById("book").style.display = "none";
+			document.getElementById("periodical").style.display = "none";
+			document.getElementById("web").style.display = "none";
+			
+			type = document.getElementById("typeSelector").value;
+			document.getElementById(type).style.display = "table";
+		}
+	</script>
+	
 	</body>
 
 </html>
