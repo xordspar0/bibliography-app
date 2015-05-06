@@ -18,7 +18,7 @@
     
 	        $query = "SELECT *  
                       FROM bibliographies 
-                      WHERE userID = :currentUser";
+                      WHERE owner = :currentUser";
         		        
 	        $stid = oci_parse($conn,$query);
 			oci_bind_by_name($stid, ":currentUser", $currentUser);
