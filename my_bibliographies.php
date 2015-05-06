@@ -30,12 +30,9 @@
 			oci_bind_by_name($stid, ":currentUser", $currentUser);
         	oci_execute($stid,OCI_DEFAULT);
             	
-            while($objResult = oci_fetch_array($stid,OCI_BOTH))  
+            while(($row = oci_fetch_array($stid,OCI_NUM)) != false)  
             {
-               foreach($objResult as $item)
-               {
-                   echo "<a href='add_citation_manual.php?bID=" . $objResult['bID'] . "'>" . $objResult['name'] . "</a>";
-               }
+               echo "<a href='add_citation_manual.php?bID=" . $row[0] . "'>" . $row[2] . "</a>";
             }
             
             oci_free_statement($stid);
