@@ -23,60 +23,6 @@
 		header("Location: view_bibliographies.php");
 	}
 	
-	oci_free_statement($stid);
-	
-	//Print Book Citations
-
-	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
-			FROM citations, books, bibliographies
-			WHERE citations.cID = books.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($bookResult = oci_fetch_array($stid, OCI_NUM))
-	{
-		echo $bookResult[0].', '.$bookResult[1].'. <i>',$bookResult[2].'.</i> '.$bookResult[3].': '.$bookResult[4].', '.$bookResult[5].'. Print.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    
-    //Print Periodical Citations
-    
-	$query="SELECT authorLast, authorFirst, title, name, pubDate, pageNum
-			FROM citations, periodicals, bibliographies
-			WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($periodicalResult = oci_fetch_array($stid, OCI_NUM))
-	{
-		echo $periodicalResult[0].', '.$periodicalResult[1].'. "',$periodicalResult[2].'" <i>'.$periodicalResult[3].'</i> '.$periodicalResult[4].': '.$periodicalResult[5].'. Print.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    
-    //Print Web Citations
-    
-	$query="SELECT authorLast, authorFirst, title, name, pubDate
-			FROM citations, website, bibliographies
-			WHERE citations.cID = website.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($webResult = oci_fetch_array($stid, OCI_NUM))
-	{
-		echo $webResult[0].'', ''.$webResult[1].'. "',$webResult[2].'" <i>'.$webResult[3].'</i> '.$webResult[4].': n. pag. Web.<br>';	
-	}
-	
     oci_free_statement($stid);
     oci_close($conn);
 ?>
@@ -90,9 +36,71 @@
 	</head>
 
 	<body>
-		<?php require 'header.php' ?>
+		<?php require "header.php" ?>
 		
-		<h1>View Citaions</h1>
+		<h1>View Citations</h1>
+		
+		<?php
+			//Print Book Citations
+		
+			$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
+					FROM citations, books, bibliographies
+					WHERE citations.cID = books.cID AND citations.bID = :bID";
+					
+			$stid = oci_parse($conn, $query);
+			oci_bind_by_name($stid, ":bID", $currentBib);
+			
+			oci_execute($stid,OCI_DEFAULT);
+			
+			echo "<ul>\n";
+			while($bookResult = oci_fetch_array($stid, OCI_NUM))
+			{
+				echo "<li>" . $bookResult[0].", ".$bookResult[1].". <i>",$bookResult[2].".</i> ".$bookResult[3].": ".$bookResult[4].", ".$bookResult[5].". Print.</li>\n";
+			}
+			echo "</ul>\n";
+			
+		    oci_free_statement($stid);
+		    
+		    //Print Periodical Citations
+		    
+			$query="SELECT authorLast, authorFirst, title, name, pubDate, pageNum
+					FROM citations, periodicals, bibliographies
+					WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
+					
+			$stid = oci_parse($conn, $query);
+			oci_bind_by_name($stid, ":bID", $currentBib);
+			
+			oci_execute($stid,OCI_DEFAULT);
+			
+			echo "<ul>\n";
+			while($periodicalResult = oci_fetch_array($stid, OCI_NUM))
+			{
+				echo "<li>" . $periodicalResult[0].", ".$periodicalResult[1].". ",$periodicalResult[2]." <i>".$periodicalResult[3]."</i> ".$periodicalResult[4].": ".$periodicalResult[5].". Print.</li>\n";	
+			}
+			echo "</ul>\n";
+			
+		    oci_free_statement($stid);
+		    
+		    //Print Web Citations
+		    
+			$query="SELECT authorLast, authorFirst, title, name, pubDate
+					FROM citations, website, bibliographies
+					WHERE citations.cID = website.cID AND citations.bID = :bID";
+					
+			$stid = oci_parse($conn, $query);
+			oci_bind_by_name($stid, ":bID", $currentBib);
+			
+			oci_execute($stid,OCI_DEFAULT);
+			
+			echo "<ul>\n";
+			while($webResult = oci_fetch_array($stid, OCI_NUM))
+			{
+				echo "<li>" . $webResult[0].", ".$webResult[1].". ",$webResult[2]." <i>".$webResult[3]."</i> ".$webResult[4].": n. pag. Web.</li>\n";	
+			}
+			echo "</ul>\n";
+		?>
+		
+		<h2>Create a new citation</h2>
 		
 		<select id="typeSelector" onchange="changeType()">
 			<option value="">Select type...</option>
@@ -189,7 +197,7 @@
 		</form>
 
 	<?php echo $errorMessage;?>
-	<?php require 'footer.php' ?>
+	<?php require "footer.php" ?>
 	
 	<script>
 		function changeType() {

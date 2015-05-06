@@ -27,11 +27,13 @@
 	        $stid = oci_parse($conn,$query);
 			oci_bind_by_name($stid, ":currentUser", $currentUser);
         	oci_execute($stid,OCI_DEFAULT);
-            	
+            
+            echo "<ul>\n";
             while(($row = oci_fetch_array($stid,OCI_NUM)) != false)  
             {
-               echo "<a href='view_citations.php?bID=" . $row[0] . "'>" . $row[2] . "</a><br>";
+               echo "<li><a href='view_citations.php?bID=" . $row[0] . "'>" . $row[2] . "</a></li>\n";
             }
+            echo "</ul>\n";
             
             oci_free_statement($stid);
             oci_close($conn);
