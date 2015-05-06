@@ -30,7 +30,7 @@
             	
             while(($row = oci_fetch_array($stid,OCI_NUM)) != false)  
             {
-               echo "<a href='view_citations.php?bID=" . $row[0] . "'>" . $row[2] . "</a>";
+               echo "<a href='view_citations.php?bID=" . $row[0] . "'>" . $row[2] . "</a><br>";
             }
             
             oci_free_statement($stid);

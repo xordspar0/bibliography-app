@@ -23,7 +23,7 @@ $pWord="";
 	<body>
 		<div id="wrapper">
 			<h1>Login</h1>
-			<form action="management.php" method="post">
+			<form action="view_bibliographies.php" method="post">
 				Name: <br><input type="text" name="name"><br>
 				Password: <br><input type="password" name="password"><br><br>
 				<input id="button" type="submit" name="submit" value="Log-In">
