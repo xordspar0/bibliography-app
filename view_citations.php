@@ -6,7 +6,7 @@
 	session_start();
 	
 	$currentUser = $_SESSION["name"];
-	$currentBib = $_GET["bID"];
+	$currentBib = htmlspecialchars($_GET["bID"]);
 
 	$conn = oci_connect($dbuser, $dbpass, $dbconn);
 	$query = "SELECT *
