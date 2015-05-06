@@ -1,6 +1,5 @@
 <?php
 	$postVars = $_POST;
-	$currentBib = $_GET['bID'];
 	require "require_login.php";
 	require "config.php";
 	
@@ -63,6 +62,10 @@
     		$stid = oci_parse($conn, $query);
             oci_bind_by_name($stid, ":name", $_POST["name"]);
             oci_bind_by_name($stid, ":pubDate", $_POST["pubDate"]);
+		}
+		else
+		{
+			echo "<script>alert('Not working');</script>";
 		}
 		
 		oci_execute($stid,OCI_DEFAULT);
