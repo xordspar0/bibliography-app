@@ -20,15 +20,17 @@ $pWord="";
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="main.css" />
 	</head>
-	<header><h1>Login</h1></header>
 	<body>
-		<br>
-		<form action="management.php" method="post">
-		Name: <br><input type="text" name="name"><br>
-		Password: <br><input type="password" name="password"><br><br>
-		<input id="button" type="submit" name="submit" value="Log-In">
-		</form><br>
-		<?php echo $errorMessage; ?><br>
-		<a href="register.php">Register</a>
+		<div id="wrapper">
+			<h1>Login</h1>
+			<form action="management.php" method="post">
+				Name: <br><input type="text" name="name"><br>
+				Password: <br><input type="password" name="password"><br><br>
+				<input id="button" type="submit" name="submit" value="Log-In">
+			</form>
+			
+			<p><?php echo $errorMessage; ?></p>
+			<p><a href="register.php">Register</a></p>
+		</div>
 	</body>
 </html>

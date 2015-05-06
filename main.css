@@ -1,5 +1,8 @@
 #wrapper {
+	background-color: gray;
+	border-radius: 25px;
 	max-width: 900px;
+	padding: 25px;
 }
 
 nav ul {

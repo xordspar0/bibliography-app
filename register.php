@@ -52,20 +52,24 @@
 		<link rel="stylesheet" type="text/css" href="main.css" />
 	</head>
 	<body>
-	 	<h1>Register</h1>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-	  	User-ID: <br><input type="text" name="userID">
-		<br>
-  		First: <br><input type="text" name="firstName">
-  		<br>
-	  	Last: <br><input type="text" name="lastName">
-	  	<br>
-	  	Password: <br><input type="password" name="password">
-		<br>
-	  	Re-Enter Password: <br><input type="password" name="rePassword">
-		<br>
-	  	<input id="button" type="submit" name="register" value="Register">
-	  	
-	  	<?php echo $errorMessage;?>
+		<div id="wrapper">
+		 	<h1>Register</h1>
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+			  	User-ID: <br>
+			  	<input type="text" name="userID"><br>
+		  		First: <br>
+		  		<input type="text" name="firstName"><br>
+			  	Last: <br>
+			  	<input type="text" name="lastName"><br>
+			  	Password: <br>
+			  	<input type="password" name="password"><br>
+			  	Re-Enter Password: <br>
+			  	<input type="password" name="rePassword"><br>
+			  	
+			  	<input id="button" type="submit" name="register" value="Register">
+			  </form>
+		  	
+		  	<p><?php echo $errorMessage; ?></p>
+	  	</div>
 	</body>
 </html>
