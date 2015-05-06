@@ -4,11 +4,11 @@
 	require "config.php";
 	
 	$currentUser=$_SESSION['name'];
+$currentBib = htmlspecialchars($_GET["bID"]);
+
 	
 	if ($_SERVER['REQUEST_METHOD']=="POST")
 	{
-		$currentBib = htmlspecialchars($_GET["bID"]);
-		
 		$conn= oci_connect($dbuser, $dbpass, $dbconn);
 		
 		$query="INSERT INTO citations

@@ -164,6 +164,14 @@
 					<td><input type="text" name="perName" required/></td>
 				</tr>
 				<tr>
+					<td>Publication Date:</td>
+					<td><input type="date" name="pubDate" required/></td>
+				</tr>
+				<tr>
+					<td>Page Number:</td>
+					<td><input type="number" name="pageNum" required/></td>
+				</tr>
+				<tr>
 					<td></td>
 					<td><input type="submit" value="Add" /></td>
 				</tr>
@@ -187,6 +195,10 @@
 				<tr>
 				    <td>Website Name:</td>
 				    <td><input type="text" name="webName" required/></td>
+				</tr>
+				<tr>
+					<td>Publication Date:</td>
+					<td><input type="date" name="pubDate"/></td>
 				</tr>
 				<tr>
 					<td></td>
