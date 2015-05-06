@@ -2,6 +2,10 @@
 	$postVars = $_POST;
 	require "require_login.php";
 	$currentBib=$_GET["bID"];
+	
+	if(empty($currentBib)) {
+		header("Location: my_bibliographies.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>
