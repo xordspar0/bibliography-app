@@ -1,11 +1,84 @@
 <?php
 	$postVars = $_POST;
 	require "require_login.php";
-	$currentBib=$_GET["bID"];
+	require "config.php";
+
+	session_start();
 	
-	if(empty($currentBib)) {
+	$currentUser = $_SESSION["name"];
+	$currentBib = $_GET["bID"];
+
+	$conn = oci_connect($dbuser, $dbpass, $dbconn);
+	$query = "SELECT *
+              FROM bibliographies 
+              WHERE bID = :currentBib";
+        		        
+	$stid = oci_parse($conn,$query);
+	oci_bind_by_name($stid, ":currentBib", $currentBib);
+    oci_execute($stid,OCI_DEFAULT);
+	
+	$foundBib = oci_fetch_array($stid);
+	
+	if ($foundBib[2] != $currentUser) {
 		header("Location: my_bibliographies.php");
 	}
+	
+	oci_free_statement($stid);
+	
+	//Print Book Citations
+
+	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
+			FROM citations, books, bibliographies
+			WHERE citations.cID = books.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while($bookResult = oci_fetch_array($stid, OCI_BOTH))
+	{
+		echo $bookResult['authorLast'].', '.$bookResult['authorFirst'].'. <i>',$bookResult['title'].'.</i> '.$bookResult['city'].': '.$bookResult['publisher'].', '.$bookResult['yearPublished'].'. Print.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    
+    //Print Periodical Citations
+    
+	$query="SELECT authorLast, authorFirst, title, name, pubDate, pageNum
+			FROM citations, periodicals, bibliographies
+			WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while($periodicalResult = oci_fetch_array($stid, OCI_BOTH))
+	{
+		echo $periodicalResult['authorLast'].', '.$periodicalResult['authorFirst'].'. "',$periodicalResult['title'].'" <i>'.$periodicalResult['name'].'</i> '.$periodicalResult['pubDate'].': '.$periodicalResult['pageNum'].'. Print.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    
+    //Print Web Citations
+    
+	$query="SELECT authorLast, authorFirst, title, name, pubDate
+			FROM citations, website, bibliographies
+			WHERE citations.cID = website.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while($webResult = oci_fetch_array($stid, OCI_BOTH))
+	{
+		echo $webResult['authorLast'].'', ''.$webResult['authorFirst'].'. "',$webResult['title'].'" <i>'.$webResult['name'].'</i> '.$webResult['pubDate'].': n. pag. Web.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    oci_close($conn);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +90,6 @@
 	</head>
 
 	<body>
-		<!--TODO: Have the users citations in the selected bibliography displayed in MLA format-->
 		<?php require 'header.php' ?>
 		<select id="typeSelector" onchange="changeType()">
 			<option value="">Select type...</option>
@@ -122,7 +194,7 @@
 			document.getElementById("periodical").style.display = "none";
 			document.getElementById("web").style.display = "none";
 			
-			type = document.getElementById("typeSelector").value;
+			var type = document.getElementById("typeSelector").value;
 			document.getElementById(type).style.display = "table";
 		}
 	</script>
