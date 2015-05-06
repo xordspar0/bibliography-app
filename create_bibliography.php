@@ -28,7 +28,7 @@
 		        
         oci_free_statement($stid);
         oci_close($conn); 
-        header("Location: bibliography_management.php");
+        header("Location: management.php");
 	}
 ?>
 <!DOCTYPE html>

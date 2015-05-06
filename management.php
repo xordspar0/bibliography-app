@@ -14,7 +14,7 @@ require "require_login.php";
 		<?php require 'header.php' ?>
 
 		<ul class="actions">
-			<li><a href="my_bibliographies.php">My Bibliographies</a></li>
+			<li><a href="view_bibliographies.php">View Bibliographies</a></li>
 			<li><a href="create_bibliography.php">Create a new Bibliography</a></li>
 		</ul>
 

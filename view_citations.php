@@ -20,7 +20,7 @@
 	$foundBib = oci_fetch_array($stid);
 	
 	if ($foundBib[2] != $currentUser) {
-		header("Location: my_bibliographies.php");
+		header("Location: view_bibliographies.php");
 	}
 	
 	oci_free_statement($stid);
