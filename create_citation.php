@@ -7,7 +7,7 @@
 	
 	if ($_SERVER['REQUEST_METHOD']=="POST")
 	{
-		$bID = htmlspecialchars($_GET["bID"]);
+		$currentBib = htmlspecialchars($_GET["bID"]);
 		
 		$conn= oci_connect($dbuser, $dbpass, $dbconn);
 		
@@ -73,6 +73,6 @@
         oci_free_statement($stid);
         oci_close($conn);
         
-        header("Location: view_citations.php");
+        header("Location: view_citations.php?bID=" . $currentBib);
 	}
 ?>
