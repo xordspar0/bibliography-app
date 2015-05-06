@@ -36,9 +36,9 @@
 	
 	oci_execute($stid,OCI_DEFAULT);
 	
-	while($bookResult = oci_fetch_array($stid, OCI_BOTH))
+	while($bookResult = oci_fetch_array($stid, OCI_NUM))
 	{
-		echo $bookResult['authorLast'].', '.$bookResult['authorFirst'].'. <i>',$bookResult['title'].'.</i> '.$bookResult['city'].': '.$bookResult['publisher'].', '.$bookResult['yearPublished'].'. Print.<br>';	
+		echo $bookResult[0].', '.$bookResult[1].'. <i>',$bookResult[2].'.</i> '.$bookResult[3].': '.$bookResult[4].', '.$bookResult[5].'. Print.<br>';	
 	}
 	
     oci_free_statement($stid);
@@ -54,9 +54,9 @@
 	
 	oci_execute($stid,OCI_DEFAULT);
 	
-	while($periodicalResult = oci_fetch_array($stid, OCI_BOTH))
+	while($periodicalResult = oci_fetch_array($stid, OCI_NUM))
 	{
-		echo $periodicalResult['authorLast'].', '.$periodicalResult['authorFirst'].'. "',$periodicalResult['title'].'" <i>'.$periodicalResult['name'].'</i> '.$periodicalResult['pubDate'].': '.$periodicalResult['pageNum'].'. Print.<br>';	
+		echo $periodicalResult[0].', '.$periodicalResult[1].'. "',$periodicalResult[2].'" <i>'.$periodicalResult[3].'</i> '.$periodicalResult[4].': '.$periodicalResult[5].'. Print.<br>';	
 	}
 	
     oci_free_statement($stid);
@@ -72,9 +72,9 @@
 	
 	oci_execute($stid,OCI_DEFAULT);
 	
-	while($webResult = oci_fetch_array($stid, OCI_BOTH))
+	while($webResult = oci_fetch_array($stid, OCI_NUM))
 	{
-		echo $webResult['authorLast'].'', ''.$webResult['authorFirst'].'. "',$webResult['title'].'" <i>'.$webResult['name'].'</i> '.$webResult['pubDate'].': n. pag. Web.<br>';	
+		echo $webResult[0].'', ''.$webResult[1].'. "',$webResult[2].'" <i>'.$webResult[3].'</i> '.$webResult[4].': n. pag. Web.<br>';	
 	}
 	
     oci_free_statement($stid);
