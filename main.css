@@ -5,6 +5,11 @@
 	padding: 25px;
 }
 
+#greeting {
+	float: left;
+	margin: 16px 0 16px 0;
+}
+
 nav ul {
 	list-style-type: none;
 	text-align: right;
