@@ -118,19 +118,19 @@
 				</tr>
 				<tr>
 					<td>City:</td>
-					<td><input type="text" name="city" required</td>
+					<td><input type="text" name="city" required/></td>
 				</tr>
 				<tr>
 					<td>Publisher:</td>
 					<td><input type="text" name="publisher" required/></td>
 				</tr>
 				<tr>
-					<td>Year Published</td>
-					<td><input type="text" name="yearPub" required</td>
+					<td>Year Published:</td>
+					<td><input type="text" name="yearPub" required/></td>
 				</tr>
 				<tr>
 				    <td></td>
-				    <td><input type="submit" Value="Add"/></td>
+				    <td><input type="submit" value="Add"/></td>
 				</tr>
 			</table>
 		</form>
@@ -155,7 +155,7 @@
 				</tr>
 				<tr>
 					<td>Page Number:</td>
-					<td><input type="text" name = "pageNum" required</td>
+					<td><input type="text" name = "pageNum" required/></td>
 				</tr>
 				<tr>
 					<!--<td>Publication Date:</td>:</td>
