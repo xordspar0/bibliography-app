@@ -20,6 +20,5 @@ require "require_login.php";
 			<li><a href="create_bibliography.php">Create a new Bibliography</a></li>
 		</ul>
 
-		<?php require 'footer.php' ?>
 	</body>
 </html>

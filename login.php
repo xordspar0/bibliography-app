@@ -21,7 +21,7 @@ $pWord="";
 		<link rel="stylesheet" type="text/css" href="main.css" />
 	</head>
 	<body>
-		<div id="wrapper">
+		<section>
 			<h1>Login</h1>
 			<form action="view_bibliographies.php" method="post">
 				Name: <br><input type="text" name="name"><br>
@@ -31,6 +31,6 @@ $pWord="";
 			
 			<p><?php echo $errorMessage; ?></p>
 			<p><a href="register.php">Register</a></p>
-		</div>
+		</section>
 	</body>
 </html>

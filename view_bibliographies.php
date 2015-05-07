@@ -12,6 +12,7 @@
     <body>
         <?php require "header.php"; ?>
         
+        <section>
         <h1>My Bibliographies</h1>
         
         <?php
@@ -52,7 +53,7 @@
 				</tr>
 			</table>
 		</form>
+		</section>
         
-        <?php require "footer.php"; ?>
     </body>
 </html>

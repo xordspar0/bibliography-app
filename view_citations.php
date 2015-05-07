@@ -37,6 +37,7 @@
 	<body>
 		<?php require "header.php" ?>
 		
+		<section>
 		<h1>View Citations</h1>
 <?php
 	//Print Book Citations	
@@ -200,8 +201,8 @@
 		</form>
 
 	<?php echo $errorMessage;?>
-	<?php require "footer.php" ?>
-	
+	</section>
+
 	<script>
 		function changeType() {
 			document.getElementById("book").style.display = "none";

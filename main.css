@@ -1,4 +1,4 @@
-#wrapper {
+#topbar {
 	background-color: gray;
 	border-radius: 25px;
 	max-width: 900px;
@@ -8,6 +8,13 @@
 #greeting {
 	float: left;
 	margin: 16px 0 16px 0;
+}
+
+section {
+	background-color: gray;
+	border-radius: 25px;
+	max-width: 900px;
+	padding: 25px;
 }
 
 nav ul {
