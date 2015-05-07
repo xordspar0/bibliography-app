@@ -3,6 +3,7 @@
 	border-radius: 25px;
 	max-width: 900px;
 	padding: 25px;
+	margin: 5px;
 }
 
 #greeting {
@@ -15,6 +16,7 @@ section {
 	border-radius: 25px;
 	max-width: 900px;
 	padding: 25px;
+	margin:; 5px;
 }
 
 nav ul {
