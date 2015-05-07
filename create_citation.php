@@ -39,7 +39,7 @@
     		$stid = oci_parse($conn, $query);
             oci_bind_by_name($stid, ":city", $_POST["city"]);
             oci_bind_by_name($stid, ":publisher", $_POST["publisher"]);
-            oci_bind_by_name($stid, ":yearPublished", $_POST["yearPublished"]);
+            oci_bind_by_name($stid, ":yearPublished", $_POST["yearPub"]);
 		}
 		elseif ($_GET["type"] == "periodical")
 		{
@@ -49,7 +49,7 @@
     					   :pubDate,
     					   :pageNum)";
     		$stid = oci_parse($conn, $query);
-            oci_bind_by_name($stid, ":name", $_POST["name"]);
+            oci_bind_by_name($stid, ":name", $_POST["perName"]);
             oci_bind_by_name($stid, ":pubDate", $_POST["pubDate"]);
             oci_bind_by_name($stid, ":pageNum", $_POST["pageNum"]);
 		}
@@ -60,7 +60,7 @@
     					   :name,
     					   :pubDate)";
     		$stid = oci_parse($conn, $query);
-            oci_bind_by_name($stid, ":name", $_POST["name"]);
+            oci_bind_by_name($stid, ":name", $_POST["webName"]);
             oci_bind_by_name($stid, ":pubDate", $_POST["pubDate"]);
 		}
 		else

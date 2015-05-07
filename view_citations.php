@@ -7,6 +7,8 @@
 	
 	$currentUser = $_SESSION["name"];
 	$currentBib = htmlspecialchars($_GET["bID"]);
+	echo $currentBib;
+
 
 	$conn = oci_connect($dbuser, $dbpass, $dbconn);
 	$query = "SELECT *
@@ -24,62 +26,9 @@
 	}
 	
 	oci_free_statement($stid);
-	
-	//Print Book Citations
+?>		
+			
 
-	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
-			FROM citations, books, bibliographies
-			WHERE citations.cID = books.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($bookResult = oci_fetch_array($stid, OCI_NUM))
-	{
-		echo $bookResult[0].', '.$bookResult[1].'. <i>',$bookResult[2].'.</i> '.$bookResult[3].': '.$bookResult[4].', '.$bookResult[5].'. Print.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    
-    //Print Periodical Citations
-    
-	$query="SELECT authorLast, authorFirst, title, name, pubDate, pageNum
-			FROM citations, periodicals, bibliographies
-			WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($periodicalResult = oci_fetch_array($stid, OCI_NUM))
-	{
-		echo $periodicalResult[0].', '.$periodicalResult[1].'. "',$periodicalResult[2].'" <i>'.$periodicalResult[3].'</i> '.$periodicalResult[4].': '.$periodicalResult[5].'. Print.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    
-    //Print Web Citations
-    
-	$query="SELECT authorLast, authorFirst, title, name, pubDate
-			FROM citations, website, bibliographies
-			WHERE citations.cID = website.cID AND citations.bID = :bID";
-			
-	$stid = oci_parse($conn, $query);
-	oci_bind_by_name($stid, ":bID", $currentBib);
-	
-	oci_execute($stid,OCI_DEFAULT);
-	
-	while($webResult = oci_fetch_array($stid, OCI_NUM))
-	{
-		echo $webResult[0].'', ''.$webResult[1].'. "',$webResult[2].'" <i>'.$webResult[3].'</i> '.$webResult[4].': n. pag. Web.<br>';	
-	}
-	
-    oci_free_statement($stid);
-    oci_close($conn);
-?>
 <!DOCTYPE html>
 <html>
 
@@ -92,8 +41,64 @@
 	<body>
 		<?php require 'header.php' ?>
 		
-		<h1>View Citaions</h1>
-		
+		<h1>View Citations</h1>
+
+<?php
+	//Print Book Citations	
+	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
+			FROM citations, books
+			WHERE citations.cID = books.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while(($bookResult = oci_fetch_array($stid, OCI_NUM)) != false)
+	{
+		echo $bookResult[0].', '.$bookResult[1].'. <i>',$bookResult[2].'.</i> '.$bookResult[3].': '.$bookResult[4].', '.$bookResult[5].'. Print.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    
+    //Print Periodical Citations
+    
+	$query="SELECT authorLast, authorFirst, title, periodicals.name, pubDate, pageNum
+			FROM citations, periodicals
+			WHERE citations.cID = periodicals.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while(($periodicalResult = oci_fetch_array($stid, OCI_NUM)) != false)
+	{
+		echo $periodicalResult[0].', '.$periodicalResult[1].'. "',$periodicalResult[2].'" <i>'.$periodicalResult[3].'</i> '.$periodicalResult[4].': '.$periodicalResult[5].'. Print.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    
+    //Print Web Citations
+    
+	$query="SELECT authorLast, authorFirst, title, website.name, pubDate
+			FROM citations, website
+			WHERE citations.cID = website.cID AND citations.bID = :bID";
+			
+	$stid = oci_parse($conn, $query);
+	oci_bind_by_name($stid, ":bID", $currentBib);
+	
+	oci_execute($stid,OCI_DEFAULT);
+	
+	while(($webResult = oci_fetch_array($stid, OCI_NUM)) != false)
+	{
+		echo $webResult[0].', '.$webResult[1].'. "',$webResult[2].'" <i>'.$webResult[3].'</i> '.$webResult[4].': n. pag. Web.<br>';	
+	}
+	
+    oci_free_statement($stid);
+    oci_close($conn);
+?>
+		<br><br>
 		<select id="typeSelector" onchange="changeType()">
 			<option value="">Select type...</option>
 			<option value="book">Book</option>
@@ -149,12 +154,17 @@
 					<td><input type="text" name="last" required/></td>
 				</tr>
 				<tr>
-					<td>City:</td>
-					<td><input type="text" name="city" required/></td>
-				</tr>
-				<tr>
 					<td>Periodical Name:</td>
 					<td><input type="text" name="perName" required/></td>
+				</tr>
+				<tr>
+					<td>Page Number:</td>
+					<td><input type="text" name = "pageNum" required</td>
+				</tr>
+				<tr>
+					<!--<td>Publication Date:</td>:</td>
+					<td><input type="text" name="pubDate" required/></td>
+					<td><i>(DD-MMM-YYY)</i></td>-->
 				</tr>
 				<tr>
 					<td></td>
@@ -180,6 +190,11 @@
 				<tr>
 				    <td>Website Name:</td>
 				    <td><input type="text" name="webName" required/></td>
+				</tr>
+				<tr>
+					<!--<td>Publication Date:</td>:</td>
+					<td><input type="text" name="pubDate" required/></td>
+					<td><i>(DD-MMM-YYY)</i></td>-->
 				</tr>
 				<tr>
 					<td></td>
