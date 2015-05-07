@@ -7,8 +7,6 @@
 	
 	$currentUser = $_SESSION["name"];
 	$currentBib = htmlspecialchars($_GET["bID"]);
-	echo $currentBib;
-
 
 	$conn = oci_connect($dbuser, $dbpass, $dbconn);
 	$query = "SELECT *
@@ -27,7 +25,19 @@
 	
 	oci_free_statement($stid);
 ?>		
+<!DOCTYPE html>
+<html>
 
+	<head>
+		<title>View Citations</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="main.css" />
+	</head>
+
+	<body>
+		<?php require "header.php" ?>
+		
+		<h1>View Citations</h1>
 <?php
 	//Print Book Citations	
 	$query="SELECT authorLast, authorFirst, title, city, publisher, yearPublished
@@ -82,20 +92,6 @@
 	
     oci_free_statement($stid);
 ?>
-
-<!DOCTYPE html>
-<html>
-
-	<head>
-		<title>View Citations</title>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="main.css" />
-	</head>
-
-	<body>
-		<?php require "header.php" ?>
-		
-		<h1>View Citations</h1>
 		
 		<h2>Create a new citation</h2>
 		
