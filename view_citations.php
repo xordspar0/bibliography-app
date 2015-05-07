@@ -96,9 +96,24 @@
 	}
 	
     oci_free_statement($stid);
-    oci_close($conn);
 ?>
-		<br><br>
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>View Citations</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="main.css" />
+	</head>
+
+	<body>
+		<?php require "header.php" ?>
+		
+		<h1>View Citations</h1>
+		
+		<h2>Create a new citation</h2>
+		
 		<select id="typeSelector" onchange="changeType()">
 			<option value="">Select type...</option>
 			<option value="book">Book</option>
@@ -158,6 +173,7 @@
 					<td><input type="text" name="perName" required/></td>
 				</tr>
 				<tr>
+<<<<<<< HEAD
 					<td>Page Number:</td>
 					<td><input type="text" name = "pageNum" required</td>
 				</tr>
@@ -165,6 +181,14 @@
 					<!--<td>Publication Date:</td>:</td>
 					<td><input type="text" name="pubDate" required/></td>
 					<td><i>(DD-MMM-YYY)</i></td>-->
+=======
+					<td>Publication Date:</td>
+					<td><input type="date" name="pubDate" required/></td>
+				</tr>
+				<tr>
+					<td>Page Number:</td>
+					<td><input type="number" name="pageNum" required/></td>
+>>>>>>> 4e88f27bef02739f9dec8bc178ff690ba930f1df
 				</tr>
 				<tr>
 					<td></td>
@@ -192,9 +216,14 @@
 				    <td><input type="text" name="webName" required/></td>
 				</tr>
 				<tr>
+<<<<<<< HEAD
 					<!--<td>Publication Date:</td>:</td>
 					<td><input type="text" name="pubDate" required/></td>
 					<td><i>(DD-MMM-YYY)</i></td>-->
+=======
+					<td>Publication Date:</td>
+					<td><input type="date" name="pubDate"/></td>
+>>>>>>> 4e88f27bef02739f9dec8bc178ff690ba930f1df
 				</tr>
 				<tr>
 					<td></td>
@@ -204,7 +233,7 @@
 		</form>
 
 	<?php echo $errorMessage;?>
-	<?php require 'footer.php' ?>
+	<?php require "footer.php" ?>
 	
 	<script>
 		function changeType() {

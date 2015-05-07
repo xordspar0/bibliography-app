@@ -5,6 +5,8 @@
 	
 	$currentUser=$_SESSION['name'];
 	
+
+	
 	if ($_SERVER['REQUEST_METHOD']=="POST")
 	{
 		$currentBib = htmlspecialchars($_GET["bID"]);
