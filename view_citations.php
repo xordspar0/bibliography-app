@@ -27,21 +27,6 @@
 	
 	oci_free_statement($stid);
 ?>		
-			
-
-<!DOCTYPE html>
-<html>
-
-	<head>
-		<title>View Citations</title>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="main.css" />
-	</head>
-
-	<body>
-		<?php require 'header.php' ?>
-		
-		<h1>View Citations</h1>
 
 <?php
 	//Print Book Citations	
