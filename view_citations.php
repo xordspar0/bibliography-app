@@ -138,7 +138,7 @@
 		<form id="periodical" action="create_citation.php?bID=<?php echo $currentBib; ?>&type=periodical" method="post" style="display: none;">
 			<table>
 				<tr>
-					<td>Periodical Title:</td>
+					<td>Article Title:</td>
 					<td><input type="text" name="title" required /></td>
 				</tr>
 				<tr>
@@ -172,7 +172,7 @@
 		<form id="web" action="create_citation.php?bID=<?php echo $currentBib; ?>&type=web" method="post" style="display: none;">
 			<table>
 				<tr>
-					<td>Web Source Title:</td>
+					<td>Article Title:</td>
 					<td><input type="text" name="title" required /></td>
 				</tr>
 				<tr>
