@@ -154,7 +154,6 @@
 					<td><input type="text" name="perName" required/></td>
 				</tr>
 				<tr>
-<<<<<<< HEAD
 					<td>Page Number:</td>
 					<td><input type="text" name = "pageNum" required</td>
 				</tr>
@@ -162,14 +161,6 @@
 					<!--<td>Publication Date:</td>:</td>
 					<td><input type="text" name="pubDate" required/></td>
 					<td><i>(DD-MMM-YYY)</i></td>-->
-=======
-					<td>Publication Date:</td>
-					<td><input type="date" name="pubDate" required/></td>
-				</tr>
-				<tr>
-					<td>Page Number:</td>
-					<td><input type="number" name="pageNum" required/></td>
->>>>>>> 4e88f27bef02739f9dec8bc178ff690ba930f1df
 				</tr>
 				<tr>
 					<td></td>
@@ -197,14 +188,9 @@
 				    <td><input type="text" name="webName" required/></td>
 				</tr>
 				<tr>
-<<<<<<< HEAD
 					<!--<td>Publication Date:</td>:</td>
 					<td><input type="text" name="pubDate" required/></td>
 					<td><i>(DD-MMM-YYY)</i></td>-->
-=======
-					<td>Publication Date:</td>
-					<td><input type="date" name="pubDate"/></td>
->>>>>>> 4e88f27bef02739f9dec8bc178ff690ba930f1df
 				</tr>
 				<tr>
 					<td></td>
